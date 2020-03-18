@@ -1,6 +1,6 @@
 # Uber-Paczka
 
-Project inspired by Uber but moved to world of package delivery
+Project inspired by Uber but moved to world of package delivery. Anyone can order a package to be delivered within an hour in town. You order we deliver
 
 
 ## Technology used
@@ -57,7 +57,7 @@ Project inspired by Uber but moved to world of package delivery
 <tr>
 <td>
 
-![summary-screen](https://user-images.githubusercontent.com/38226876/76958871-c0066e80-6918-11ea-9442-426aea02d3dc.png)
+![order](https://user-images.githubusercontent.com/38226876/76962340-550c6600-691f-11ea-9802-ff02cb453961.png)
 </td>
 <td>
 
@@ -84,3 +84,18 @@ Project inspired by Uber but moved to world of package delivery
 </td>
 </tr>
 </table>
+
+## Architecture overview
+
+The application does not use the thrid party API to retrieve user information. This means that each user has to go through the registration process to provide their basic data. Additionally, if the user wants to become a driver delivering packages, it is required to provide additional information
+Local data is in effect immutable, the client just downloads updated
+versions of data as needed. Local data is only modified as a result of
+api operations.
+
+The application uses mainly fragments, because activities are quite heavy for the system. To improve the user experience, the application uses GPS to track the current location of the user. The user must agree to use his location data.
+
+## Authentication & security
+
+All confidential information is stored in Firebase Authentication service. This includes credit card numbers, telephone numbers etc. The rest of the information such as your home address is stored in Firestore.
+Logging in to the application is done by e-mail and password. You do not need to provide this information every time you log on. Logging in is done using token and refresh token.
+
